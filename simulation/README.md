@@ -89,7 +89,6 @@ bash eval_track.sh g1waistroll [your_exp_desc] [checkpoint] [traj_name]
 
 ## 3. Save jit model
 ```bash
-# bash to_jit.sh g1waist [your_exp_desc] # e.g. bash to_jit.sh g1waist pretrained_exp
 python save_jit.py --proj_name g1waist_track --exptid [your_exp_desc] --checkpoint [checkpoint] --robot g1
 # e.g. python save_jit.py --proj_name g1waist_track --exptid stage2_get_up --checkpoint -1 --robot g1
 ```

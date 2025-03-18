@@ -9,12 +9,13 @@ lowstate_topic: "rt/lowstate"
 
 # policy_path: "deploy/pre_train/g1/motion.pt"
 policy_path: "simulation/legged_gym/logs/g1waist_track/stage2_get_up/traced/stage2_get_up-36000-jit.pt"
+# policy_path: "simulation/legged_gym/logs/g1waistroll_track/stage2_roll_over/traced/stage2_roll_over-30500-jit.pt"
 
 leg_joint2motor_idx: [0, 1, 2, 3, 4, 5, 
                       6, 7, 8, 9, 10, 11]
 
 kps: [150, 150, 200, 200, 20, 20, 
-      150, 150, 200, 200, 20, 200]
+      150, 150, 200, 200, 20, 20]
 
 kds: [5, 5, 5, 5, 4, 4, 
       5, 5, 5, 5, 4, 4]
