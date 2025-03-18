@@ -92,9 +92,12 @@ class G1WaistTrack(Humanoid):
         self.initial_root_states = torch.tensor([ 8.6570e-03,  5.0515e-04,  5.6526e-02, -9.8234e-03,  4.9986e-01,
             1.7525e-02, -8.6587e-01,  1.0610e-04, -4.5519e-05,  2.4261e-03,
             5.6199e-03, -8.3706e-03, -1.0773e-03]).to(sim_device).repeat(self.num_envs, 1)
+        # x, y, z, quat, lin vel, ang vel
+
         self.initial_dof_pos = torch.tensor([-0.3600,  0.2481,  1.6115, -0.0647, -0.8612, -0.1226, -0.3878,  0.3584,
             1.5328,  0.1519, -0.8651,  0.2362, -0.0357,  0.0685, -0.5200,  0.4665,
             0.8218,  0.4253,  1.2972,  0.1429, -1.0324, -0.4241,  1.4075]).to(sim_device).repeat(self.num_envs, 1)
+        
         data = np.load("facingup_poses.npy")
         training_idx = int(data.shape[0] * 0.5)
         self.initial_root_states_all = torch.from_numpy(data[:training_idx, :13]).to(self.device)
@@ -773,7 +776,9 @@ class G1WaistTrack(Humanoid):
             priv_latent = torch.zeros(
                 (self.num_envs, self.cfg.env.n_priv_latent), device=self.device
             )
-
+        # priv_latent = torch.zeros(
+        #     (self.num_envs, self.cfg.env.n_priv_latent), device=self.device
+        # )
         self.obs_buf = torch.cat(
             [obs_buf, priv_latent, self.obs_history_buf.view(self.num_envs, -1)], dim=-1
         )
